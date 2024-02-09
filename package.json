@@ -1,0 +1,19 @@
+{
+  "name": "index",
+  "version": "1.0.0",
+  "description": "Open Source Project Collaboration Hub",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodeunit"
+  },
+  "keywords": [
+    "Open"
+  ],
+  "author": "Akshay Pophali",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongoose": "^8.1.1"
+  }
+}

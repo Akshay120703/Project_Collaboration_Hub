@@ -1,0 +1,26 @@
+// collaborationModel.js
+const mongoose = require('mongoose');
+
+const taskSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  description: { type: String, required: true },
+  assignedTo: { type: String, required: true },
+  status: { type: String, enum: ['Todo', 'In Progress', 'Done'], default: 'Todo' },
+  dueDate: { type: Date },
+});
+
+const collaborationSchema = new mongoose.Schema({
+  projectId: { type: String, required: true, unique: true },
+  chatMessages: [
+    {
+      message: { type: String, required: true },
+      userId: { type: String, required: true },
+      timestamp: { type: Date, default: Date.now },
+    },
+  ],
+  tasks: [taskSchema], // Embed the task schema within the collaboration schema
+});
+
+const CollaborationData = mongoose.model('CollaborationData', collaborationSchema);
+
+module.exports = CollaborationData;
